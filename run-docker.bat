@@ -56,7 +56,7 @@ docker run -d ^
   -e "DB_URL=jdbc:mysql://host.docker.internal:3306/revhubteam7?useSSL=false&allowPublicKeyRetrieval=true" ^
   -e DB_USER=%DB_USER% ^
   -e DB_PASS=%DB_PASS% ^
-  -e MONGO_URI=mongodb://%MONGO_HOST%:%MONGO_PORT%/%MONGO_DB% ^
+  -e MONGO_URI=mongodb://%MONGO_CONTAINER%:27017/%MONGO_DB% ^
   %BACKEND_IMAGE%
 
 echo Backend started: %BACKEND_CONTAINER%
