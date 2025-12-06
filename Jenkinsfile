@@ -11,14 +11,7 @@ pipeline {
 
         stage('Load Infrastructure Properties') {
             steps {
-                script {
-                    echo 'Loading infra-config.properties...'
-                    def props = readProperties file: 'infra-config.properties'
-                    props.each { k, v ->
-                        env."${k}" = v
-                    }
-                    echo "Loaded ${props.size()} properties"
-                }
+                echo 'Skipping properties load - using environment variables from Docker run command'
             }
         }
 
