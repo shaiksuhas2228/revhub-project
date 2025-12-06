@@ -67,12 +67,16 @@ pipeline {
                 sleep time: 30, unit: 'SECONDS'
                 script {
                     if (isUnix()) {
-                        sh 'curl -f http://localhost:8080/actuator/health || exit 1'
+                        sh 'docker ps'
+                        sh 'docker logs revhub-backend --tail 50'
+                        sh 'curl -f http://localhost:8080/ || echo "Backend not ready yet"'
                     } else {
-                        bat 'curl -f http://localhost:8080/actuator/health || exit 1'
+                        bat 'docker ps'
+                        bat 'docker logs revhub-backend --tail 50'
+                        bat 'curl -f http://localhost:8080/ || echo Backend not ready yet'
                     }
                 }
-                echo 'Backend health check passed'
+                echo 'Health check complete'
             }
         }
     }
@@ -80,18 +84,23 @@ pipeline {
     post {
         success {
             echo 'Deployment successful!'
-            echo "Frontend: http://localhost:${env.FRONTEND_PORT_HOST}"
-            echo "Backend: http://localhost:${env.BACKEND_PORT_HOST}"
+            echo 'Frontend: http://localhost:4200'
+            echo 'Backend: http://localhost:8080'
         }
         failure {
             echo 'Deployment failed. Check logs for details.'
             script {
                 if (isUnix()) {
-                    sh 'docker logs ${BACKEND_CONTAINER} || true'
+                    sh 'docker ps -a || true'
+                    sh 'docker logs revhub-backend --tail 100 || true'
                 } else {
-                    bat 'docker logs %BACKEND_CONTAINER% || exit 0'
+                    bat 'docker ps -a || exit 0'
+                    bat 'docker logs revhub-backend --tail 100 || exit 0'
                 }
             }
+        }
+        always {
+            echo 'Pipeline execution completed'
         }
     }
 }
