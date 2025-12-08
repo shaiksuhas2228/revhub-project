@@ -37,7 +37,7 @@ export interface PageResponse<T> {
   providedIn: 'root'
 })
 export class PostService {
-  private apiUrl = 'http://localhost:8080/posts';
+  private apiUrl = 'http://18.118.83.64:8080/posts';
 
   constructor(private http: HttpClient) { }
 
