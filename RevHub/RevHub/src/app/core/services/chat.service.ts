@@ -18,7 +18,7 @@ export interface ChatMessage {
   providedIn: 'root'
 })
 export class ChatService {
-  private apiUrl = 'http://3.17.60.182:8080/chat';
+  private apiUrl = 'http://localhost:8080/chat';
 
   constructor(private http: HttpClient) { }
 
