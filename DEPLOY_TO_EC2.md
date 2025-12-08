@@ -1,6 +1,6 @@
 # RevHub EC2 Deployment Guide
 
-**EC2 IP:** 18.118.83.64  
+**EC2 IP:** 3.151.228.198 (Elastic IP - PERMANENT)  
 **Key File:** C:\aws-keys\revhub-key.pem
 
 ---
@@ -11,7 +11,7 @@ Open PowerShell and run:
 
 ```powershell
 cd C:\aws-keys
-ssh -i revhub-key.pem ubuntu@18.118.83.64
+ssh -i revhub-key.pem ubuntu@3.151.228.198
 ```
 
 If permission error, run:
@@ -58,7 +58,7 @@ exit
 
 Then reconnect:
 ```powershell
-ssh -i revhub-key.pem ubuntu@18.118.83.64
+ssh -i revhub-key.pem ubuntu@3.151.228.198
 ```
 
 ---
@@ -126,8 +126,8 @@ chmod +x run-docker.sh
 
 ## STEP 9: Access Application
 
-- **Frontend:** http://18.118.83.64:4200
-- **Backend:** http://18.118.83.64:8080
+- **Frontend:** http://3.151.228.198:4200
+- **Backend:** http://3.151.228.198:8080
 
 ---
 
