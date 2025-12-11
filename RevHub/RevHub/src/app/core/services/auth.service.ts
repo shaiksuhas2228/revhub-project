@@ -26,7 +26,7 @@ export interface JwtResponse {
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = 'http://3.143.197.18:8080/auth';
   private currentUserSubject = new BehaviorSubject<any>(null);
   public currentUser$ = this.currentUserSubject.asObservable();
 
@@ -92,7 +92,7 @@ export class AuthService {
   }
 
   searchUsers(query: string): Observable<any[]> {
-    return this.http.get<any[]>(`http://3.151.228.198:8080/search/users?q=${query || ''}`);
+    return this.http.get<any[]>(`http://3.143.197.18:8080/search/users?q=${query || ''}`);
   }
   
   verifyOTP(email: string, otp: string): Observable<string> {
