@@ -28,7 +28,7 @@ export interface FollowRequest {
   providedIn: 'root'
 })
 export class ProfileService {
-  private apiUrl = 'http://3.151.228.198:8080/profile';
+  private apiUrl = 'http://localhost:8080/profile';
 
   constructor(private http: HttpClient) { }
 
